@@ -1,18 +1,3 @@
-const config = {
-    type: Phaser.AUTO,
-    width: 1200,
-    height: 600,
-    physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: { y: 300 },
-            debug: false,
-        }
-    },
-    scene: [MenuScene, GameScene]
-};
-
-const game = new Phaser.Game(config);
 let selectedDifficulty = 'medium';
 
 // EASY STAGES - More forgiving platforms, wider spacing
@@ -555,3 +540,20 @@ let isSliding = false;
 let slideDuration = 0;
 let stageText;
 let finishZone;
+
+// Initialize game after all classes are defined
+const config = {
+    type: Phaser.AUTO,
+    width: 1200,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false,
+        }
+    },
+    scene: [MenuScene, GameScene]
+};
+
+const game = new Phaser.Game(config);
