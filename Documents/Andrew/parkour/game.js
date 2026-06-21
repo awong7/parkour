@@ -179,6 +179,7 @@ class GameScene extends Phaser.Scene {
         player.setBounce(0);
         player.setCollideWorldBounds(false);
         player.setDrag(0.99);
+        player.body.setSize(20, 40);
         player.play('idle');
 
         this.physics.add.collider(player, platforms, () => {
@@ -495,7 +496,7 @@ function loadStage(scene, STAGES, stageNum) {
     stage.platforms.forEach(p => {
         let platform = platforms.create(p.x, p.y, 'platform');
         platform.setScale(p.w, p.h);
-        platform.refreshBody();
+        platform.body.updateFromGameObject();
     });
 
     wallGroup = scene.physics.add.staticGroup();
@@ -509,7 +510,7 @@ function loadStage(scene, STAGES, stageNum) {
     stage.walls.forEach(w => {
         let wall = wallGroup.create(w.x, w.y, 'wall');
         wall.setScale(1, w.h);
-        wall.refreshBody();
+        wall.body.updateFromGameObject();
     });
 
     finishZone = scene.physics.add.group();
